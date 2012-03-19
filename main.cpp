@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
 #include <GL/glut.h>
 #include "Simulator.h"
 #include "Util/Timing.h"
@@ -172,6 +174,7 @@ int main(int argc, char** argv)
 		atexit(ExitCallback);
 		glutMainLoop();
 	}
+	getchar();
 	delete gSim;
 	return 0;
 }
