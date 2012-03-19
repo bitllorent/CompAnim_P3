@@ -11,9 +11,9 @@
 #include "Simulator.h"
 #endif
 
-#include "UserAllocator.h"
-#include "Timing.h"
-#include "Utilities.h"
+#include "Util/UserAllocator.h"
+#include "Util/Timing.h"
+#include "Util/Utilities.h"
 #include "DrawObjects.h"
 #include "Actors.h"
 

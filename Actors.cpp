@@ -1,8 +1,8 @@
 #include "Actors.h"
 
 #include <stdio.h>
-#include "cooking.h"
-#include "Stream.h"
+#include "Util/cooking.h"
+#include "Util/Stream.h"
 
 
 Actors::Actors(NxPhysicsSDK *sdk, NxScene *scene)

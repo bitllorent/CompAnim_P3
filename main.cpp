@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 #include "Simulator.h"
-#include "Timing.h"
+#include "Util/Timing.h"
 using namespace std;
 
 static Simulator *gSim = NULL;

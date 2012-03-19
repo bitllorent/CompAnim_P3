@@ -1,28 +1,44 @@
-﻿Build started 3/19/2012 8:31:24 AM.
+﻿Build started 3/18/2012 10:54:17 PM.
      1>Project "C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Project3.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Project3.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\Documents\CS 4496\Project3\Project3\Project3\Util" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Foundation\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\PhysXLoader\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Cooking\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _CONSOLE /D _DEBUG /D NX32 /D NX_USE_SDK_STAATICLIBS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Actors.cpp DrawObjects.cpp main.cpp Simulator.cpp Util\cooking.cpp Util\Stream.cpp Util\Timing_WIN.cpp Util\UserAllocator.cpp
-         UserAllocator.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\userallocator.cpp(9): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
-         Timing_WIN.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\timing_win.cpp(4): fatal error C1083: Cannot open include file: 'Nx.h': No such file or directory
-         Stream.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\stream.cpp(2): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\CJ\Dropbox\School\CS 4496CompAnim\CompAnim_Proj3\Util" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Foundation\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\PhysXLoader\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Cooking\include" /IC:\glut\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _CONSOLE /D _DEBUG /D NX32 /D NX_USE_SDK_STAATICLIBS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Actors.cpp DrawObjects.cpp Simulator.cpp Util\Stream.cpp Util\Timing_WIN.cpp Util\UserAllocator.cpp Util\cooking.cpp main.cpp
          cooking.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\cooking.h(5): fatal error C1083: Cannot open include file: 'NxCooking.h': No such file or directory
-         Simulator.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\simulator.h(13): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
-         main.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\main.cpp(2): fatal error C1083: Cannot open include file: 'GL/glut.h': No such file or directory
-         DrawObjects.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\drawobjects.cpp(1): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
-         Actors.cpp
-     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\actors.h(5): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         UserAllocator.cpp
+         Timing_WIN.cpp
+         Stream.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\stream.cpp(7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
          Generating Code...
-     1>Done Building Project "C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Project3.vcxproj" (build target(s)) -- FAILED.
+         Skipping... (no relevant changes detected)
+         main.cpp
+         Simulator.cpp
+         DrawObjects.cpp
+         Actors.cpp
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Debug\Project3.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\Win32" PhysXLoader.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Project3.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Debug\Project3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Debug\Project3.lib" /MACHINE:X86 Debug\Project3.exe.embed.manifest.res
+         Debug\Actors.obj
+         Debug\DrawObjects.obj
+         Debug\main.obj
+         Debug\Simulator.obj
+         Debug\cooking.obj
+         Debug\Stream.obj
+         Debug\Timing_WIN.obj
+         Debug\UserAllocator.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Project3.exe.embed.manifest" /manifest Debug\Project3.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         Project3.vcxproj -> C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Debug\Project3.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\Project3.unsuccessfulbuild".
+         Touching "Debug\Project3.lastbuildstate".
+     1>Done Building Project "C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Project3.vcxproj" (build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:04.13
+Time Elapsed 00:00:02.61

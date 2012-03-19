@@ -3,7 +3,7 @@
 
 #include <GL/glut.h>
 
-#include "common.h"
+#include "Util/common.h"
 
 static float gPlaneData[]={
     -1.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
