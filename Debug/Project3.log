@@ -1,0 +1,28 @@
+﻿Build started 3/19/2012 8:31:24 AM.
+     1>Project "C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Project3.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Project3.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\Documents\CS 4496\Project3\Project3\Project3\Util" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Foundation\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\PhysXLoader\include" /I"C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Cooking\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _CONSOLE /D _DEBUG /D NX32 /D NX_USE_SDK_STAATICLIBS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Actors.cpp DrawObjects.cpp main.cpp Simulator.cpp Util\cooking.cpp Util\Stream.cpp Util\Timing_WIN.cpp Util\UserAllocator.cpp
+         UserAllocator.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\userallocator.cpp(9): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         Timing_WIN.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\timing_win.cpp(4): fatal error C1083: Cannot open include file: 'Nx.h': No such file or directory
+         Stream.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\stream.cpp(2): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         cooking.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\util\cooking.h(5): fatal error C1083: Cannot open include file: 'NxCooking.h': No such file or directory
+         Simulator.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\simulator.h(13): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         main.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\main.cpp(2): fatal error C1083: Cannot open include file: 'GL/glut.h': No such file or directory
+         DrawObjects.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\drawobjects.cpp(1): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         Actors.cpp
+     1>c:\users\cj\dropbox\school\cs4496companim\companim_p3\actors.h(5): fatal error C1083: Cannot open include file: 'NxPhysics.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\CJ\Dropbox\School\CS4496CompAnim\CompAnim_P3\Project3.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:04.13
