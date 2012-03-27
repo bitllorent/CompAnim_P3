@@ -65,6 +65,8 @@ public:
 	NxFixedJoint* CreateCannonJoint(NxActor* a0, NxActor* a1, const NxVec3& globalAnchor, const NxVec3& globalAxis);
 	
 	NxSphericalJoint* CreateBladeLink(NxActor* a0, NxActor* a1, const NxVec3& globalAnchor, const NxVec3& globalAxis);	
+
+	NxActor* CreateCatapult(const NxVec3& pos, const NxVec3& boxDim, const NxReal density);
 	
 private:
 	NxQuat AnglesToQuat(const NxVec3& angles);

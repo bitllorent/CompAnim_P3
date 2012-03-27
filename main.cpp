@@ -7,6 +7,7 @@
 using namespace std;
 
 static Simulator *gSim = NULL;
+static NxActor *player = NULL;
 
 // Display globals
 int gMainHandle;
@@ -18,6 +19,7 @@ NxVec3 gCameraPos(0,5,-8);
 NxVec3 gCameraForward(0,0,1);
 NxVec3 gCameraRight(-1,0,0);
 const NxReal gCameraSpeed = 0.02;
+const NxReal playerSpeed = 0.01;
 
 
 // Keyboard globals
@@ -30,22 +32,24 @@ bool bPause = false;
 void ProcessKeys()
 {
 	// Process keys
+	NxVec3 pos = player->getGlobalPosition();
 	for (int i = 0; i < MAX_KEYS; i++)
 	{	
 		if (!gKeys[i])  { continue; }
 		
 		switch (i)
 		{
-				// Camera controls
-			case 'w':{ gCameraPos += gCameraForward*gCameraSpeed; break; }
-			case 's':{ gCameraPos -= gCameraForward*gCameraSpeed; break; }
-			case 'a':{ gCameraPos -= gCameraRight*gCameraSpeed; break; }
-			case 'd':{ gCameraPos += gCameraRight*gCameraSpeed; break; }
+			// Camera and player controls
+			case 'w':{ pos.x += gCameraForward.x*playerSpeed;pos.z += gCameraForward.z*playerSpeed;break; }
+			case 's':{ pos.x -= gCameraForward.x*playerSpeed;pos.z -= gCameraForward.z*playerSpeed;break; }
+			case 'a':{ pos.x -= gCameraRight.x*playerSpeed;pos.z -= gCameraRight.z*playerSpeed;break; }
+			case 'd':{ pos.x += gCameraRight.x*playerSpeed;pos.z += gCameraRight.z*playerSpeed;break; }
 			case 'z':{ gCameraPos -= NxVec3(0,1,0)*gCameraSpeed; break; }
 			case 'q':{ gCameraPos += NxVec3(0,1,0)*gCameraSpeed; break; }
-				
 		}
 	}
+	player->setGlobalPosition(pos);
+	gCameraPos = player->getGlobalPosition() + gCameraForward*-3;
 }
 
 void SetupCamera()
@@ -171,10 +175,10 @@ int main(int argc, char** argv)
 	// Initialize physics scene and start the application main loop if scene was created
 	if (gSim->InitNx()){
 		gSim->CreateScene();
+		player = gSim->getSelectedActor();
 		atexit(ExitCallback);
 		glutMainLoop();
 	}
-	getchar();
 	delete gSim;
 	return 0;
 }

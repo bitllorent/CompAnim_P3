@@ -30,22 +30,8 @@ NxVec3 Simulator::ApplyForceToActor(NxActor *actor, const NxVec3& forceDir)
 }
 
 void Simulator::ProcessKeys(const bool *keys)
-{
-	if(keys['i'] == true){
-		mForceVec = ApplyForceToActor(mActors->mSelectedActor, NxVec3(0,0,1));
-	}else if(keys['k'] == true){
-		mForceVec = ApplyForceToActor(mActors->mSelectedActor, NxVec3(0,0,-1));
-	}else if(keys['j'] == true){
-		mForceVec = ApplyForceToActor(mActors->mSelectedActor, NxVec3(1,0,0));
-	}else if(keys['l'] == true){
-		mForceVec = ApplyForceToActor(mActors->mSelectedActor, NxVec3(-1,0,0));
-	}else if(keys['u'] == true){
-		mForceVec = ApplyForceToActor(mActors->mSelectedActor, NxVec3(0,1,0));
-	}else if(keys['m'] == true){
-		mForceVec = ApplyForceToActor(mActors->mSelectedActor, NxVec3(0,-1,0));
-	}else{
-		mForceVec.zero();
-	}
+{	
+	
 }
 
 void Simulator::RenderActors()
@@ -124,28 +110,13 @@ void Simulator::CreateScene()
 	// Create the objects in the scene
 	mObjects.push_back(mActors->CreateGroundPlane());
 
-	// create pendulum
-	NxActor *capsule1 = mActors->CreateCapsule(NxVec3(1.4, 5, 0), 1.1, 0.45, 1);
-	NxActor *capsule2 = mActors->CreateCapsule(NxVec3(1.4, 3, 0), 1.3, 0.35, 0.7);
-	NxActor *capsule3 = mActors->CreateCapsule(NxVec3(1.4, 1.6, 0), 0.8, 0.3, 0.5);
-	capsule1->setLinearDamping(0.2);
-	capsule2->setLinearDamping(0.2);
-	capsule3->setLinearDamping(0.2);
-	
-	// creat joints
-	NxVec3 globalAnchor1 = NxVec3(1.4,7,0);
-	NxVec3 globalAnchor2 = NxVec3(1.4,5,0);
-	NxVec3 globalAnchor3 = NxVec3(1.4,3,0);
-	NxVec3 globalAxis = NxVec3(0, -1, 0);
-	mActors->CreateSphericalJoint(NULL, capsule1, globalAnchor1, globalAxis);
-	mActors->CreateSphericalJoint(capsule1, capsule2, globalAnchor2, globalAxis);
-	mActors->CreateSphericalJoint(capsule2, capsule3, globalAnchor3, globalAxis);
-	
+	//create player
+	NxActor *player = mActors->CreateCatapult(NxVec3(5, 0, 0), NxVec3(0.5, 0.5, 0.5), 1.0);
 	
 	mActors->CreateStack(NxVec3(0, 0, 0), NxVec3(2, 7, 2), NxVec3(0.2, 0.2, 0.2), 1.0);
 	
 	
-	mActors->mSelectedActor = capsule3;
+	mActors->mSelectedActor = player;
 	getElapsedTime();
 }
 
@@ -184,6 +155,10 @@ void Simulator::RunPhysics()
 	mScene->simulate(deltaTime);	
 	mScene->flushStream();
 	mScene->fetchResults(NX_RIGID_BODY_FINISHED, true);
+}
+
+NxActor* Simulator::getSelectedActor() {
+	return mActors->mSelectedActor;
 }
 
 

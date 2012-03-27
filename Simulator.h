@@ -44,6 +44,8 @@ public:
 	void RenderScene();
 	void RunPhysics();
 	void ProcessKeys(const bool *keys);
+
+	NxActor* getSelectedActor();
 		
 private:
 	void Reset();
