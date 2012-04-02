@@ -15,7 +15,7 @@ int mx = 0;
 int my = 0;
 
 // Camera globals
-NxVec3 gCameraPos(0,5,-8);
+NxVec3 gCameraPos(0,2,-8);
 NxVec3 gCameraForward(0,0,1);
 NxVec3 gCameraRight(-1,0,0);
 const NxReal gCameraSpeed = 0.02;
@@ -32,7 +32,14 @@ bool bPause = false;
 void ProcessKeys()
 {
 	// Process keys
-	NxVec3 pos = player->getGlobalPosition();
+	NxVec3 pos = gCameraPos;
+	NxQuat q; 
+	NxMat34 rot;
+	float theta = acos( NxVec3(0, 0, 1).dot(gCameraForward)) * 180/NxPiF32;
+	if(gCameraForward.x < 0 || (gCameraForward.x < 0 && gCameraForward.z < 0)) theta = 360-theta;
+	printf("%f\n", theta);
+	q.fromAngleAxis(theta+90, NxVec3(0, 1, 0));
+	rot.M.fromQuat(q);
 	for (int i = 0; i < MAX_KEYS; i++)
 	{	
 		if (!gKeys[i])  { continue; }
@@ -40,16 +47,46 @@ void ProcessKeys()
 		switch (i)
 		{
 			// Camera and player controls
-			case 'w':{ pos.x += gCameraForward.x*playerSpeed;pos.z += gCameraForward.z*playerSpeed;break; }
-			case 's':{ pos.x -= gCameraForward.x*playerSpeed;pos.z -= gCameraForward.z*playerSpeed;break; }
-			case 'a':{ pos.x -= gCameraRight.x*playerSpeed;pos.z -= gCameraRight.z*playerSpeed;break; }
-			case 'd':{ pos.x += gCameraRight.x*playerSpeed;pos.z += gCameraRight.z*playerSpeed;break; }
+			case 'w': 
+				pos.x += gCameraForward.x*playerSpeed;
+				pos.z += gCameraForward.z*playerSpeed;
+				q.fromAngleAxis(theta+90, NxVec3(0, 1, 0));
+				rot.M.fromQuat(q);
+				break; 
+			case 's': 
+				pos.x -= gCameraForward.x*playerSpeed;
+				pos.z -= gCameraForward.z*playerSpeed;
+				q.fromAngleAxis(theta+270, NxVec3(0, 1, 0));
+				rot.M.fromQuat(q);
+				break;
+			case 'a': 
+				pos.x -= 2*gCameraRight.x*playerSpeed;
+				pos.z -= 2*gCameraRight.z*playerSpeed;
+				q.fromAngleAxis(theta+180, NxVec3(0, 1, 0));
+				rot.M.fromQuat(q);
+				break; 
+			case 'd': 
+				pos.x += 2*gCameraRight.x*playerSpeed;
+				pos.z += 2*gCameraRight.z*playerSpeed;
+				q.fromAngleAxis(theta, NxVec3(0, 1, 0));
+				rot.M.fromQuat(q);
+				break; 
 			case 'z':{ gCameraPos -= NxVec3(0,1,0)*gCameraSpeed; break; }
 			case 'q':{ gCameraPos += NxVec3(0,1,0)*gCameraSpeed; break; }
 		}
 	}
-	player->setGlobalPosition(pos);
-	gCameraPos = player->getGlobalPosition() + gCameraForward*-3;
+	
+	player->setGlobalPose(rot);
+
+	if(pos.magnitude() > 8 && pos.magnitude() < 15)
+		gCameraPos = pos;
+	pos = gCameraForward; pos.y = 0;
+	player->setGlobalPosition(4*pos + gCameraPos - NxVec3(0, gCameraPos.y, 0));
+	
+	gCameraForward = NxVec3(0-gCameraPos.x, 0, 0-gCameraPos.z);
+	gCameraForward.normalize();
+	gCameraRight.cross(gCameraForward,NxVec3(0,1,0));
+	
 }
 
 void SetupCamera()
@@ -120,13 +157,15 @@ void MotionCallback(int x, int y)
     int dx = mx - x;
     int dy = my - y;
     
-    gCameraForward.normalize();
-    gCameraRight.cross(gCameraForward,NxVec3(0,1,0));
+    //gCameraForward.normalize();
+    //gCameraRight.cross(gCameraForward,NxVec3(0,1,0));
 	
+	/*
     NxQuat qx(NxPiF32 * dx * 20 / 180.0f, NxVec3(0,1,0));
     qx.rotate(gCameraForward);
     NxQuat qy(NxPiF32 * dy * 20 / 180.0f, gCameraRight);
     qy.rotate(gCameraForward);
+	*/
 	
     mx = x;
     my = y;
