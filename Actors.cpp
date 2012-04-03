@@ -1353,52 +1353,52 @@ NxSphericalJoint* Actors::CreateBladeLink(NxActor* a0, NxActor* a1, const NxVec3
 	return static_cast<NxSphericalJoint*>(mScene->createJoint(sphericalDesc));
 }
 
-NxActor* Actors::CreateCatapult(const NxVec3& pos, const NxVec3& boxDim, const NxReal density)
+NxActor* Actors::CreateCatapult(const NxVec3& pos, float size, const NxReal density)
 {
 	NxActorDesc actorDesc;
 	NxBodyDesc bodyDesc;
 
 	//the chassis
 	NxBoxShapeDesc boxDesc1;
-	boxDesc1.dimensions.set(4*boxDim.x/3,boxDim.y/3,boxDim.z/3);
-	boxDesc1.localPose.t = NxVec3(0,0,0);
+	boxDesc1.dimensions.set(4*size/3,size/3,size/3);
+	boxDesc1.localPose.t = NxVec3(0,0,-5*size/6);
 	actorDesc.shapes.pushBack(&boxDesc1);
 
 	NxBoxShapeDesc boxDesc2;
-	boxDesc2.dimensions.set(4*boxDim.x/3,boxDim.y/3,boxDim.z/3);
-	boxDesc2.localPose.t = NxVec3(0,0,5*boxDim.z/3);
+	boxDesc2.dimensions.set(4*size/3,size/3,size/3);
+	boxDesc2.localPose.t = NxVec3(0,0,5*size/6);
 	actorDesc.shapes.pushBack(&boxDesc2);
 	
 	NxBoxShapeDesc boxDesc3;
-	boxDesc3.dimensions.set(boxDim.x/5,boxDim.y/5,4*boxDim.z/3);
-	boxDesc3.localPose.t = NxVec3(boxDim.x,0,5*boxDim.z/6);
+	boxDesc3.dimensions.set(size/5,size/5,4*size/3);
+	boxDesc3.localPose.t = NxVec3(size,0,0);
 	actorDesc.shapes.pushBack(&boxDesc3);
 
 	NxBoxShapeDesc boxDesc4;
-	boxDesc4.dimensions.set(boxDim.x/5,boxDim.y/5,4*boxDim.z/3);
-	boxDesc4.localPose.t = NxVec3(-boxDim.x,0,5*boxDim.z/6);
+	boxDesc4.dimensions.set(size/5,size/5,4*size/3);
+	boxDesc4.localPose.t = NxVec3(-size,0,0);
 	actorDesc.shapes.pushBack(&boxDesc4);
 
 	//the frame at the front
 	NxBoxShapeDesc boxDesc5;
-	boxDesc5.dimensions.set(boxDim.x/5,boxDim.y,boxDim.z/5);
-	boxDesc5.localPose.t = NxVec3(-boxDim.x,boxDim.y, 0);
+	boxDesc5.dimensions.set(size/5,size,size/5);
+	boxDesc5.localPose.t = NxVec3(-size,size, -5*size/6);
 	actorDesc.shapes.pushBack(&boxDesc5);
 
 	NxBoxShapeDesc boxDesc6;
-	boxDesc6.dimensions.set(boxDim.x/5,boxDim.y,boxDim.z/5);
-	boxDesc6.localPose.t = NxVec3(-boxDim.x,boxDim.y, 10*boxDim.z/6);
+	boxDesc6.dimensions.set(size/5,size,size/5);
+	boxDesc6.localPose.t = NxVec3(-size,size, 5*size/6);
 	actorDesc.shapes.pushBack(&boxDesc6);
 
 	NxBoxShapeDesc boxDesc7;
-	boxDesc7.dimensions.set(boxDim.x/3,boxDim.y/5,7*boxDim.z/6);
-	boxDesc7.localPose.t = NxVec3(-boxDim.x,3*boxDim.y/2, 5*boxDim.z/6);
+	boxDesc7.dimensions.set(size/3,size/5,7*size/6);
+	boxDesc7.localPose.t = NxVec3(-size,3*size/2, 0);
 	actorDesc.shapes.pushBack(&boxDesc7);
 
 	//the launcher
 	NxBoxShapeDesc boxDesc8;
-	boxDesc8.dimensions.set(boxDim.x/5,2*boxDim.y,boxDim.z/5);
-	boxDesc8.localPose.t = NxVec3(-boxDim.x/7,8*boxDim.y/6, 5*boxDim.z/6);
+	boxDesc8.dimensions.set(size/5,2*size,size/5);
+	boxDesc8.localPose.t = NxVec3(-size/7,8*size/6, 0);
 	NxQuat q; q.fromAngleAxis(-45, NxVec3(0, 0, 1));
 	boxDesc8.localPose.M.fromQuat(q);
 	actorDesc.shapes.pushBack(&boxDesc8);
